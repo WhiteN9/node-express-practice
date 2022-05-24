@@ -29,15 +29,6 @@ app.get("/check/:zip", validateZip, (req, res) => {
   }
 });
 
-// app.get("/zoos/:zip", validateZip, (req, res) => {
-//   const zipcode = req.params.zip;
-//   if (getZoos(zipcode).length > 0) {
-//     res.send(`${zipcode} zoos: ${zoos.join("; ")}`);
-//   } else {
-//     res.send(`${zipcode} has no zoos.`);
-//   }
-// });
-
 app.get("/zoos/:zip", validateZip, (req, res) => {
   const zipcode = req.params.zip;
   if (getZoos(zipcode).length > 0) {
