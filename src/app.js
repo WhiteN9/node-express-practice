@@ -20,6 +20,15 @@ app.get("/check/:zip", validateZip, (req, res) => {
   }
 });
 
+app.get("/zoos/:zip", validateZip, (req, res) => {
+  const zipcode = req.params.zip;
+  if (getZoos(zipcode).length > 0) {
+    res.send(`${zipcode} zoos: ${zoos.join("; ")}`);
+  } else {
+    res.send(`${zipcode} has no zoos.`);
+  }
+});
+
 // No-route handler
 app.use((req, res, next) => {
   res.send("That route could not be found!");
