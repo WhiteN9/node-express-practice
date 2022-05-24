@@ -3,7 +3,7 @@ function validateZip(req, res, next) {
   if (zipcode.length === 5 && Number.isInteger(parseInt(zipcode))) {
     next();
   } else {
-    next(`Zip (${zipcode}) is invalid`);
+    next(`Zip (${zipcode}) is invalid!`);
   }
 }
 

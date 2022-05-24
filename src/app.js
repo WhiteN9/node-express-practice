@@ -11,12 +11,21 @@ const getZoos = require("./utils/getZoos.js");
 app.use(morgan("dev"));
 
 // Routes
+app.get("/zoos/all", (req, res) => {
+  const status = req.query.admin;
+  if (status === "true") {
+    res.send(`All zoos: ${getZoos("all").join("; ")}`);
+  } else {
+    res.send("You do not have access to that route.");
+  }
+});
+
 app.get("/check/:zip", validateZip, (req, res) => {
   const zipcode = req.params.zip;
   if (getZoos(zipcode)) {
     res.send(`${zipcode} exists in our records.`);
   } else {
-    res.send(`${zipcode} does not exist in our record.`);
+    res.send(`${zipcode} does not exist in our records.`);
   }
 });
 
