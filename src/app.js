@@ -4,8 +4,11 @@ const morgan = require("morgan");
 const app = express();
 
 // Middleware
+const validateZip = require("middleware/validateZip.js");
+const getZoos = require("utils/getZoos.js");
 
 // Application-level middleware
+app.use(morgan("dev"));
 
 // Routes
 
